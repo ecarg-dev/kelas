@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelas Digital - Portal Siswa</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .student-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .student-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-animation {
+            transition: all 0.3s ease;
+        }
+        
+        .search-animation:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .control-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="min-h-full gradient-bg">
+  <div class="min-h-full"><!-- Header -->
+   <header class="glass-effect sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center py-4">
+      <div class="flex items-center space-x-4">
+       <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"><span class="text-2xl">🎓</span>
+       </div>
+       <div>
+        <h1 id="class-title" class="text-2xl font-bold text-white">Kelas 12 IPA 1</h1>
+        <p id="teacher-name" class="text-white/80 text-sm">Bu Sarah Wijaya</p>
+       </div>
+      </div><button id="control-panel-btn" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 flex items-center space-x-2"> <span>⚙️</span> <span>Control Panel</span> </button>
+     </div>
+    </div>
+   </header><!-- Welcome Section -->
+   <section class="py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+     <h2 id="welcome-message" class="text-3xl font-bold text-white mb-4 fade-in-up">Selamat Datang di Portal Kelas Digital!</h2>
+     <p class="text-white/90 text-lg mb-8 fade-in-up">Klik pada nama siswa untuk mengakses profil dan tugas mereka</p><!-- Search Bar -->
+     <div class="max-w-md mx-auto mb-8 fade-in-up"><input type="text" id="search-input" placeholder="Cari nama siswa..." class="w-full px-4 py-3 rounded-full bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 search-animation">
+     </div>
+    </div>
+   </section><!-- Students Grid -->
+   <main class="pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div id="students-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"><!-- Students will be populated by JavaScript -->
+     </div><!-- No Results Message -->
+     <div id="no-results" class="text-center py-12 hidden">
+      <div class="text-6xl mb-4">
+       🔍
+      </div>
+      <h3 class="text-xl font-semibold text-white mb-2">Tidak ada siswa ditemukan</h3>
+      <p class="text-white/80">Coba kata kunci pencarian yang berbeda</p>
+     </div>
+    </div>
+   </main><!-- Control Panel Modal -->
+   <div id="control-panel-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+    <div class="flex items-center justify-center min-h-full p-4">
+     <div class="control-panel rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6">
+       <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Control Panel</h3><button id="close-modal" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+       </div>
+       <div class="space-y-6">
+        <div>
+         <h4 class="text-lg font-semibold text-gray-700 mb-4">Daftar Siswa &amp; Link HTML</h4>
+         <div class="space-y-3 max-h-96 overflow-y-auto">
+          <div id="student-links-list" class="space-y-3"><!-- Student links will be populated here -->
+          </div>
+         </div>
+        </div>
+        <div class="border-t pt-6">
+         <h4 class="text-lg font-semibold text-gray-700 mb-4">Statistik Kelas</h4>
+         <div class="grid grid-cols-2 gap-4">
+          <div class="bg-blue-50 p-4 rounded-lg">
+           <div class="text-2xl font-bold text-blue-600">
+            34
+           </div>
+           <div class="text-sm text-blue-800">
+            Total Siswa
+           </div>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg">
+           <div class="text-2xl font-bold text-green-600">
+            100%
+           </div>
+           <div class="text-sm text-green-800">
+            Kehadiran
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Default configuration
+        const defaultConfig = {
+            class_name: "Kelas 12 TKJ 4",
+            teacher_name: "Wali Kelas Nur Inayah.S.Kom",
+            welcome_message: "Selamat Datang di Portal Kelas Digital!"
+        };
+
+        // Student data with class names
+        const students = [
+            { id: 1, name: "Deman", avatar: "👨‍🎓", status: "online" },
+            { id: 2, name: "Ajeng", avatar: "👩‍🎓", status: "online" },
+            { id: 3, name: "Alpin", avatar: "👨‍🎓", status: "offline" },
+            { id: 4, name: "Anggun", avatar: "👩‍🎓", status: "online" },
+            { id: 5, name: "Ica", avatar: "👩‍🎓", status: "online" },
+            { id: 6, name: "Azimah", avatar: "👩‍🎓", status: "offline" },
+            { id: 7, name: "Zahra", avatar: "👩‍🎓", status: "online" },
+            { id: 8, name: "Bagus", avatar: "👨‍🎓", status: "online" },
+            { id: 9, name: "Cinta", avatar: "👩‍🎓", status: "offline" },
+            { id: 10, name: "Citra", avatar: "👩‍🎓", status: "online" },
+            { id: 11, name: "Devina", avatar: "👩‍🎓", status: "online" },
+            { id: 12, name: "Devita", avatar: "👩‍🎓", status: "offline" },
+            { id: 13, name: "Dimas", avatar: "👨‍🎓", status: "online" },
+            { id: 14, name: "Ziban", avatar: "👨‍🎓", status: "online" },
+            { id: 15, name: "Fadiyah", avatar: "👩‍🎓", status: "offline" },
+            { id: 16, name: "Fany", avatar: "👩‍🎓", status: "online" },
+            { id: 17, name: "Febi", avatar: "👩‍🎓", status: "online" },
+            { id: 18, name: "Fitri", avatar: "👩‍🎓", status: "offline" },
+            { id: 19, name: "Nisa", avatar: "👩‍🎓", status: "online" },
+            { id: 20, name: "Man", avatar: "👨‍🎓", status: "online" },
+            { id: 21, name: "Mareta", avatar: "👩‍🎓", status: "offline" },
+            { id: 22, name: "Farel", avatar: "👨‍🎓", status: "online" },
+            { id: 23, name: "Hafidz", avatar: "👨‍🎓", status: "online" },
+            { id: 24, name: "Rekhan", avatar: "👨‍🎓", status: "offline" },
+            { id: 25, name: "Naysila", avatar: "👩‍🎓", status: "online" },
+            { id: 26, name: "Nico", avatar: "👨‍🎓", status: "online" },
+            { id: 27, name: "Lisa", avatar: "👩‍🎓", status: "offline" },
+            { id: 28, name: "Rahita", avatar: "👩‍🎓", status: "online" },
+            { id: 29, name: "Restu", avatar: "👨‍🎓", status: "online" },
+            { id: 30, name: "Salsa", avatar: "👩‍🎓", status: "offline" },
+            { id: 31, name: "Maul", avatar: "👨‍🎓", status: "online" },
+            { id: 32, name: "Syafiq", avatar: "👨‍🎓", status: "online" },
+            { id: 33, name: "Anjani", avatar: "👩‍🎓", status: "offline" },
+            { id: 34, name: "Zaskia", avatar: "👩‍🎓", status: "online" }
+        ];
+
+        let filteredStudents = [...students];
+
+        // Render students grid
+        function renderStudents(studentsToRender = filteredStudents) {
+            const grid = document.getElementById('students-grid');
+            const noResults = document.getElementById('no-results');
+            
+            if (studentsToRender.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            noResults.classList.add('hidden');
+            
+            grid.innerHTML = studentsToRender.map((student, index) => `
+                <div class="student-card bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-center cursor-pointer border border-white/20 fade-in-up" 
+                     style="animation-delay: ${index * 0.1}s"
+                     onclick="openStudentProfile(${student.id})">
+                    <div class="relative mb-4">
+                        <div class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center text-3xl mb-2">
+                            ${student.avatar}
+                        </div>
+                        <div class="absolute -top-1 -right-1 w-4 h-4 rounded-full ${student.status === 'online' ? 'bg-green-400' : 'bg-gray-400'} border-2 border-white"></div>
+                    </div>
+                    <h3 class="font-semibold text-white text-sm mb-2">${student.name}</h3>
+                    <div class="flex items-center justify-center space-x-1 text-xs">
+                        <span class="w-2 h-2 rounded-full ${student.status === 'online' ? 'bg-green-400' : 'bg-gray-400'}"></span>
+                        <span class="text-white/80">${student.status === 'online' ? 'Online' : 'Offline'}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                filteredStudents = students.filter(student => 
+                    student.name.toLowerCase().includes(query)
+                );
+                renderStudents(filteredStudents);
+            });
+        }
+
+        // Open student profile (placeholder function)
+        function openStudentProfile(studentId) {
+            const student = students.find(s => s.id === studentId);
+            if (student) {
+                // Create a toast notification
+                showToast(`Membuka profil ${student.name}...`);
+                
+                // In a real implementation, this would navigate to the student's HTML page
+                // For demo purposes, we'll show a message
+                setTimeout(() => {
+                    showToast(`Link HTML untuk ${student.name}: student_${studentId}.html`, 'info');
+                }, 1000);
+            }
+        }
+
+        // Toast notification system
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-500' : 'bg-blue-500'
+            }`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.style.transform = 'translateX(0)', 100);
+            setTimeout(() => {
+                toast.style.transform = 'translateX(full)';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Control panel functionality
+        function setupControlPanel() {
+            const modal = document.getElementById('control-panel-modal');
+            const openBtn = document.getElementById('control-panel-btn');
+            const closeBtn = document.getElementById('close-modal');
+            
+            openBtn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                renderStudentLinks();
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
+
+        // Render student links in control panel
+        function renderStudentLinks() {
+            const container = document.getElementById('student-links-list');
+            container.innerHTML = students.map(student => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">${student.avatar}</span>
+                        <div>
+                            <div class="font-medium text-gray-800">${student.name}</div>
+                            <div class="text-sm text-gray-500">ID: ${student.id}</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <code class="text-xs bg-gray-200 px-2 py-1 rounded">student_${student.id}.html</code>
+                        <button onclick="copyLink('student_${student.id}.html')" class="text-blue-600 hover:text-blue-800 text-sm">
+                            📋 Copy
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Copy link functionality
+        function copyLink(filename) {
+            navigator.clipboard.writeText(filename).then(() => {
+                showToast(`Link ${filename} berhasil disalin!`);
+            });
+        }
+
+        // Element SDK integration
+        async function onConfigChange(config) {
+            const classTitle = document.getElementById('class-title');
+            const teacherName = document.getElementById('teacher-name');
+            const welcomeMessage = document.getElementById('welcome-message');
+            
+            if (classTitle) classTitle.textContent = config.class_name || defaultConfig.class_name;
+            if (teacherName) teacherName.textContent = config.teacher_name || defaultConfig.teacher_name;
+            if (welcomeMessage) welcomeMessage.textContent = config.welcome_message || defaultConfig.welcome_message;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["class_name", config.class_name || defaultConfig.class_name],
+                ["teacher_name", config.teacher_name || defaultConfig.teacher_name],
+                ["welcome_message", config.welcome_message || defaultConfig.welcome_message]
+            ]);
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStudents();
+            setupSearch();
+            setupControlPanel();
+            
+            // Initialize Element SDK
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities,
+                    mapToEditPanelValues
+                });
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995040a2a76d5f54',t:'MTc2MTU0Nzc1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
