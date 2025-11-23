@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan Kelas Kita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .memory-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(251, 207, 232, 0.6);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #ffecd2 50%, #a8edea 75%, #fed6e3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 15px 15px 50px 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 1px solid #c3e6cb;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .memory-item {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="h-full gradient-bg">
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <div class="min-h-full relative z-10">
+        <!-- Header -->
+        <header class="text-center py-12 px-4">
+            <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">
+                💕 Kenangan Kelas Kita 💕
+            </h1>
+            <p class="text-xl text-white/90 drop-shadow-md max-w-2xl mx-auto">
+                Tempat spesial untuk menyimpan momen-momen indah yang tak terlupakan bersama teman-teman terbaik
+            </p>
+        </header>
+
+        <!-- Add Memory Form -->
+        <main class="max-w-6xl mx-auto px-4 pb-12">
+            <div class="memory-card rounded-3xl p-8 mb-12 max-w-2xl mx-auto">
+                <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">
+                    ✨ Tambah Kenangan Baru ✨
+                </h2>
+                
+                <form id="memoryForm" class="space-y-6">
+                    <div>
+                        <label for="authorName" class="block text-sm font-medium text-gray-600 mb-2">
+                            Nama Kamu
+                        </label>
+                        <input 
+                            type="text" 
+                            id="authorName"
+                            class="w-full px-4 py-3 rounded-2xl border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-200 outline-none transition-all"
+                            placeholder="Masukkan nama kamu..."
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="memoryTitle" class="block text-sm font-medium text-gray-600 mb-2">
+                            Judul Kenangan
+                        </label>
+                        <input 
+                            type="text" 
+                            id="memoryTitle"
+                            class="w-full px-4 py-3 rounded-2xl border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-200 outline-none transition-all"
+                            placeholder="Contoh: Piknik ke Pantai Bersama"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="memoryDate" class="block text-sm font-medium text-gray-600 mb-2">
+                            Tanggal
+                        </label>
+                        <input 
+                            type="date" 
+                            id="memoryDate"
+                            class="w-full px-4 py-3 rounded-2xl border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-200 outline-none transition-all"
+                            required
+                        >
+                    </div>
+
+                    <div>
+                        <label for="memoryDescription" class="block text-sm font-medium text-gray-600 mb-2">
+                            Ceritakan Kenangan Kamu
+                        </label>
+                        <textarea 
+                            id="memoryDescription"
+                            rows="4"
+                            class="w-full px-4 py-3 rounded-2xl border border-pink-200 focus:border-pink-400 focus:ring-2 focus:ring-pink-200 outline-none transition-all resize-none"
+                            placeholder="Ceritakan momen spesial yang ingin kamu bagikan..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div>
+                        <label for="memoryPhoto" class="block text-sm font-medium text-gray-600 mb-2">
+                            Tambah Foto (Opsional)
+                        </label>
+                        <div class="border-2 border-dashed border-pink-200 rounded-2xl p-6 text-center hover:border-pink-300 transition-colors">
+                            <input 
+                                type="file" 
+                                id="memoryPhoto"
+                                accept="image/*"
+                                class="hidden"
+                            >
+                            <div id="photoUploadArea" class="cursor-pointer" onclick="document.getElementById('memoryPhoto').click()">
+                                <div class="text-4xl mb-2">📷</div>
+                                <p class="text-gray-600 mb-1">Klik untuk pilih foto</p>
+                                <p class="text-sm text-gray-400">JPG, PNG, atau GIF (Max 5MB)</p>
+                            </div>
+                            <div id="photoPreview" class="hidden">
+                                <img id="previewImage" class="max-w-full h-32 object-cover rounded-xl mx-auto mb-3" alt="Preview">
+                                <button type="button" onclick="removePhoto()" class="text-red-500 hover:text-red-700 text-sm">
+                                    🗑️ Hapus Foto
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="memoryEmoji" class="block text-sm font-medium text-gray-600 mb-2">
+                            Pilih Emoji Favorit
+                        </label>
+                        <div class="grid grid-cols-6 gap-3">
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="😊">😊</button>
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="🎉">🎉</button>
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="💕">💕</button>
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="🌟">🌟</button>
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="🎈">🎈</button>
+                            <button type="button" class="emoji-btn text-3xl p-3 rounded-xl border-2 border-transparent hover:border-pink-300 hover:bg-pink-50 transition-all" data-emoji="🌈">🌈</button>
+                        </div>
+                        <input type="hidden" id="selectedEmoji" value="😊">
+                    </div>
+
+                    <button 
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-pink-400 to-purple-500 text-white font-semibold py-4 px-6 rounded-2xl hover:from-pink-500 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                    >
+                        💝 Simpan Kenangan
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-6 p-4 rounded-2xl success-message">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-3">🎉</span>
+                        <span class="text-green-700 font-medium">Kenangan berhasil disimpan! Terima kasih sudah berbagi momen indah.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memories Display -->
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-white text-center mb-8 drop-shadow-lg">
+                    📚 Koleksi Kenangan Kelas
+                </h2>
+                
+                <div id="memoriesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Sample memories will be displayed here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="text-center py-12">
+                    <div class="text-6xl mb-4">📝</div>
+                    <h3 class="text-2xl font-semibold text-white mb-2 drop-shadow-md">Belum Ada Kenangan</h3>
+                    <p class="text-white/80 drop-shadow-sm">Jadilah yang pertama membagikan kenangan indah kelas kita!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Memory storage
+        let memories = JSON.parse(localStorage.getItem('classMemories')) || [];
+        let selectedEmoji = '😊';
+        let selectedPhoto = null;
+
+        // Initialize floating hearts
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            
+            function addHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }
+            
+            // Add hearts periodically
+            setInterval(addHeart, 2000);
+            
+            // Add initial hearts
+            for (let i = 0; i < 5; i++) {
+                setTimeout(addHeart, i * 400);
+            }
+        }
+
+        // Photo upload handling
+        document.getElementById('memoryPhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Check file size (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar! Maksimal 5MB.');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    selectedPhoto = e.target.result;
+                    
+                    // Show preview
+                    document.getElementById('previewImage').src = selectedPhoto;
+                    document.getElementById('photoUploadArea').classList.add('hidden');
+                    document.getElementById('photoPreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Remove photo function
+        function removePhoto() {
+            selectedPhoto = null;
+            document.getElementById('memoryPhoto').value = '';
+            document.getElementById('photoUploadArea').classList.remove('hidden');
+            document.getElementById('photoPreview').classList.add('hidden');
+        }
+
+        // Emoji selection
+        document.querySelectorAll('.emoji-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove previous selection
+                document.querySelectorAll('.emoji-btn').forEach(b => {
+                    b.classList.remove('border-pink-400', 'bg-pink-100');
+                });
+                
+                // Add selection to clicked button
+                this.classList.add('border-pink-400', 'bg-pink-100');
+                
+                // Update selected emoji
+                selectedEmoji = this.dataset.emoji;
+                document.getElementById('selectedEmoji').value = selectedEmoji;
+            });
+        });
+
+        // Form submission
+        document.getElementById('memoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                id: Date.now(),
+                author: document.getElementById('authorName').value,
+                title: document.getElementById('memoryTitle').value,
+                date: document.getElementById('memoryDate').value,
+                description: document.getElementById('memoryDescription').value,
+                emoji: selectedEmoji,
+                photo: selectedPhoto,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Add to memories array
+            memories.unshift(formData);
+            
+            // Save to localStorage
+            localStorage.setItem('classMemories', JSON.stringify(memories));
+            
+            // Show success message
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Reset photo
+            removePhoto();
+            
+            // Reset emoji selection
+            document.querySelectorAll('.emoji-btn').forEach(b => {
+                b.classList.remove('border-pink-400', 'bg-pink-100');
+            });
+            document.querySelector('.emoji-btn[data-emoji="😊"]').classList.add('border-pink-400', 'bg-pink-100');
+            selectedEmoji = '😊';
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 3000);
+            
+            // Refresh memories display
+            displayMemories();
+        });
+
+        // Display memories
+        function displayMemories() {
+            const container = document.getElementById('memoriesContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (memories.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            
+            container.innerHTML = memories.map(memory => {
+                const date = new Date(memory.date);
+                const formattedDate = date.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                
+                return `
+                    <div class="memory-item polaroid">
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-3xl">${memory.emoji}</span>
+                                <span class="text-sm text-gray-500">${formattedDate}</span>
+                            </div>
+                            ${memory.photo ? `<img src="${memory.photo}" alt="${memory.title}" class="w-full h-48 object-cover rounded-lg mb-3 shadow-sm">` : ''}
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">${memory.title}</h3>
+                            <p class="text-sm text-gray-600 mb-3">${memory.description}</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-medium text-pink-600">💝 ${memory.author}</span>
+                                <button onclick="deleteMemory(${memory.id})" class="text-red-400 hover:text-red-600 transition-colors text-sm">
+                                    🗑️ Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Delete memory
+        function deleteMemory(id) {
+            memories = memories.filter(memory => memory.id !== id);
+            localStorage.setItem('classMemories', JSON.stringify(memories));
+            displayMemories();
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingHearts();
+            displayMemories();
+            
+            // Set default emoji selection
+            document.querySelector('.emoji-btn[data-emoji="😊"]').classList.add('border-pink-400', 'bg-pink-100');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995ee7d661c1b4d0',t:'MTc2MTcwMTQwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

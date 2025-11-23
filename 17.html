@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenangan TKJ 4 - SMK Negeri 1 Slawi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .image-container img {
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-full">
+    <header class="hero-gradient text-white py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Kenangan Manis di Lapangan</h1>
+            <p class="text-xl md:text-2xl opacity-90">Kelas 12 TKJ 4 - SMK Negeri 1 Slawi</p>
+            <div class="mt-6 flex items-center justify-center gap-2 text-sm opacity-80">
+                <span>📍 Slawi, Jawa Tengah</span>
+                <span>•</span>
+                <span>🎓 Angkatan 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <article class="bg-white rounded-2xl shadow-xl p-8 md:p-12 fade-in">
+            <div class="article-content text-gray-700 text-lg">
+                <p class="text-2xl font-semibold text-gray-800 mb-6">
+                    Pagi itu, mentari bersinar cerah seolah ikut menyemangati aktivitas di lapangan sekolah.
+                </p>
+                
+                <p>
+                    Udara yang hangat tak menyurutkan semangat anak-anak TKJ 4 yang sudah bersiap untuk pelajaran Olahraga bersama. Bagi mereka, jam pelajaran ini selalu menjadi fase di tengah padatnya praktik merakit komputer dan coding.
+                </p>
+
+                <div class="my-10 image-container" id="photoContainer">
+                    <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl p-8 text-center">
+                        <div class="mb-4">
+                                                    </div>
+                        <label for="imageUpload" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg cursor-pointer transition-colors">
+                            📸 Foto Kenangan 
+                        <img src="17.jpg" alt="Image dicoding" />
+                    </div>
+                </div>
+
+                <p>
+                    Seperti yang terlihat di foto, lapangan basket yang luas menjadi saksi bisu kebersamaan mereka. Lantai lapangan yang berwarna merah-hijau-putih seolah menjadi kanvas kenangan.
+                </p>
+
+                <blockquote class="border-l-4 border-purple-600 pl-6 my-8 italic text-xl text-gray-600">
+                    "Kelas kita yang terkenal arogan dan konyol, adalah kelas yang akan sangat kita rindukan saat masa perpisahan itu tiba."
+                </blockquote>
+
+                <p>
+                    Fokus utama hari itu adalah bermain bola kasti, permainan yang sangat kita sukai. Kebersamaan dan kekompakan diuji pada saat kita bermain.
+                </p>
+
+                <p>
+                    Di belakang mereka, gedung sekolah yang khas dengan atap genteng cokelat dan teritisan merah menjadi latar yang iconic. Bangunan itu seolah ikut mengabadikan momen berharga ini.
+                </p>
+
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6 my-8">
+                    <p class="font-semibold text-gray-800 mb-3">💫 Lebih dari Sekadar Olahraga</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">•</span>
+                            <span>Bukan hanya tentang skor, tetapi tentang kerjasama tim</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">•</span>
+                            <span>Bukan hanya tentang fisik, tetapi tentang melepas penat dari permainan yang melelahkan</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="text-xl font-medium text-gray-800 mt-8">
+                    Mereka sadar, di lapangan itu, bukan hanya belajar teknik olahraga, tetapi juga kekompakan dan sportivitas.
+                </p>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-200">
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-medium">#TKJ4</span>
+                    <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">#SMKNegeri1Slawi</span>
+                    <span class="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-medium">#KenanganSekolah</span>
+                    <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">#Kebersamaan</span>
+                </div>
+            </div>
+        </article>
+
+        <div class="mt-8 text-center text-gray-600">
+            <p class="text-sm">❤️ Dibuat dengan penuh kenangan oleh TKJ 4</p>
+        </div>
+    </main>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const photoContainer = document.getElementById('photoContainer');
+
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    photoContainer.innerHTML = `
+                        <img src="${event.target.result}" alt="Kenangan TKJ 4" class="w-full h-auto rounded-xl">
+                        <div class="absolute top-4 right-4">
+                            <button onclick="changePhoto()" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded-lg shadow-lg transition-colors">
+                                🔄 Ganti Foto
+                            </button>
+                        </div>
+                    `;
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function changePhoto() {
+            imageUpload.click();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995f3e4f83b6d8ca',t:'MTc2MTcwNDk0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

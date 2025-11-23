@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan SMK Negeri 1 Slawi - Kelas 12 TKJ 4</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc 0%, #ddd6fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .sparkle {
+            animation: sparkle 2s infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        .upload-area {
+            border: 3px dashed #c084fc;
+            background: linear-gradient(135deg, #fefcff, #faf5ff);
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #ddd6fe;
+            background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+            transform: translateY(-2px);
+        }
+        .upload-area.dragover {
+            border-color: #c084fc;
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            transform: scale(1.02);
+        }
+        .photo-frame {
+            background: linear-gradient(45deg, #c084fc, #ddd6fe);
+            padding: 8px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(192, 132, 252, 0.2);
+        }
+        .article-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fefcff 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 0 20px 40px rgba(192, 132, 252, 0.08);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #c084fc 0%, #ddd6fe 100%);
+            box-shadow: 0 8px 20px rgba(192, 132, 252, 0.25);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(192, 132, 252, 0.3);
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="min-h-full bg-gradient-to-br from-purple-50 via-purple-25 to-purple-100 font-sans"><!-- Header -->
+  <header class="bg-gradient-to-r from-purple-300 via-purple-200 to-purple-300 text-white shadow-2xl">
+   <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="text-center">
+     <div class="floating mb-6"><span class="text-6xl sparkle">🎓</span> <span class="text-6xl sparkle mx-4">✨</span> <span class="text-6xl sparkle">📚</span>
+     </div>
+     <h1 id="article-title" class="text-5xl font-bold mb-4 leading-tight">Kenangan Manis Kelas 12 TKJ 4</h1>
+     <div class="text-2xl font-semibold mb-2"><span id="school-name">SMK Negeri 1 Slawi</span>
+     </div>
+     <div class="text-xl opacity-90">
+      Kelas <span id="class-name">12 TKJ 4</span> • Foto Ijazah 2025
+     </div>
+     <div class="mt-6 flex justify-center space-x-4 text-3xl"><span class="sparkle">🌟</span> <span class="sparkle">💙</span> <span class="sparkle">🎉</span>
+     </div>
+    </div>
+   </div>
+  </header><!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12"><!-- Article Card -->
+   <article class="article-card rounded-3xl p-8 mb-12 fade-in"><!-- Story Section -->
+    <div class="mb-12">
+     <div class="flex items-center mb-6"><span class="text-4xl mr-4">📖</span>
+      <h2 class="text-3xl font-bold gradient-text">Cerita Kenangan Kami</h2>
+     </div>
+     <div class="bg-gradient-to-r from-purple-25 to-purple-50 rounded-2xl p-8 border-l-4 border-purple-300">
+      <p id="story-content" class="text-lg leading-relaxed text-gray-700 font-medium">Satu kelas penuh dengan teman-teman, semua tersenyum dan bergembira setelah melakukan foto ijazah. Kami saling bercanda dan mengabadikan momen-momen terakhir bersama sebelum kami berpisah untuk melanjutkan perjalanan hidup masing-masing. Setiap senyuman, setiap tawa, dan setiap pelukan perpisahan akan selalu terkenang di hati kami.</p>
+      <div class="mt-6 flex justify-center space-x-3 text-2xl"><span class="sparkle">💕</span> <span class="sparkle">🤗</span> <span class="sparkle">🌈</span>
+      </div>
+     </div>
+    </div><!-- Photo Upload Section -->
+    <div class="mb-12">
+     <div class="flex items-center mb-6"><span class="text-4xl mr-4">📷</span>
+      <h2 class="text-3xl font-bold gradient-text">Foto Kenangan Kami</h2>
+     </div><!-- Upload Area -->
+     <div id="upload-section" class="mb-8">
+      <div class="upload-area rounded-2xl p-8 text-center cursor-pointer" onclick="document.getElementById('photo-input').click()" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+       <div id="upload-placeholder">
+        <div class="text-6xl mb-4">
+         📸
+        </div>
+        <h3 class="text-2xl font-bold text-purple-400 mb-2">Upload Foto Ijazah</h3>
+        <p class="text-purple-300 text-lg mb-4">Klik di sini atau drag &amp; drop foto kalian</p>
+        <p class="text-sm text-gray-500">Format yang didukung: JPG, PNG, JPEG</p>
+        <div class="mt-4"><span class="inline-block bg-purple-50 text-purple-400 px-4 py-2 rounded-full text-sm font-medium"> 📁 Pilih File </span>
+        </div>
+       </div>
+      </div><input type="file" id="photo-input" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+     </div><!-- Photo Display -->
+     <div id="photo-display" class="hidden">
+      <div class="photo-frame"><img id="uploaded-photo" class="w-full h-96 object-cover rounded-xl" alt="Foto Kenangan Kelas 12 TKJ 4">
+      </div>
+      <div class="mt-6 text-center">
+       <p class="text-lg font-semibold text-gray-700 mb-4"><span class="text-2xl mr-2">🎉</span> Foto berhasil diupload!</p>
+       <div class="flex justify-center space-x-4"><button onclick="changePhoto()" class="btn-primary text-white px-6 py-3 rounded-xl font-semibold"> 🔄 Ganti Foto </button> <button onclick="downloadPhoto()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all"> 💾 Download </button>
+       </div>
+      </div>
+     </div>
+    </div><!-- Info Section -->
+    <div class="bg-gradient-to-r from-purple-25 to-pink-25 rounded-2xl p-8 border-2 border-purple-100">
+     <div class="text-center">
+      <div class="text-4xl mb-4">
+       🏫
+      </div>
+      <h3 class="text-2xl font-bold gradient-text mb-4">Informasi Kelas</h3>
+      <div class="grid md:grid-cols-3 gap-6 text-left">
+       <div class="bg-white rounded-xl p-4 shadow-md">
+        <div class="flex items-center mb-2"><span class="text-2xl mr-3">🏢</span> <span class="font-semibold text-gray-600">Sekolah:</span>
+        </div>
+        <p class="text-lg font-bold text-gray-800" id="info-school">SMK Negeri 1 Slawi</p>
+       </div>
+       <div class="bg-white rounded-xl p-4 shadow-md">
+        <div class="flex items-center mb-2"><span class="text-2xl mr-3">👥</span> <span class="font-semibold text-gray-600">Kelas:</span>
+        </div>
+        <p class="text-lg font-bold text-gray-800" id="info-class">12 TKJ 4</p>
+       </div>
+       <div class="bg-white rounded-xl p-4 shadow-md">
+        <div class="flex items-center mb-2"><span class="text-2xl mr-3">📅</span> <span class="font-semibold text-gray-600">Tanggal:</span>
+        </div>
+        <p class="text-lg font-bold text-gray-800" id="current-date"></p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </article><!-- Footer Message -->
+   <div class="text-center py-8">
+    <div class="bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl p-8 border-2 border-purple-150">
+     <div class="text-4xl mb-4 floating">
+      🎓
+     </div>
+     <h3 class="text-2xl font-bold gradient-text mb-4">Selamat Jalan, Teman-Teman!</h3>
+     <p class="text-lg text-gray-700 leading-relaxed">Meskipun kita akan berpisah, kenangan indah ini akan selalu terukir di hati. Semoga kita semua sukses di jalan yang berbeda-beda. Sampai jumpa lagi! 💙</p>
+     <div class="mt-6 flex justify-center space-x-4 text-3xl"><span class="sparkle">🌟</span> <span class="sparkle">💫</span> <span class="sparkle">✨</span>
+     </div>
+    </div>
+   </div>
+  </main>
+  <script>
+        // Configuration
+        const defaultConfig = {
+            article_title: "Kenangan Manis Kelas 12 TKJ 4",
+            school_name: "SMK Negeri 1 Slawi",
+            class_name: "12 TKJ 4",
+            story_content: "Satu kelas penuh dengan teman-teman, semua tersenyum dan bergembira setelah melakukan foto ijazah. Kami saling bercanda dan mengabadikan momen-momen terakhir bersama sebelum kami berpisah untuk melanjutkan perjalanan hidup masing-masing. Setiap senyuman, setiap tawa, dan setiap pelukan perpisahan akan selalu terkenang di hati kami."
+        };
+
+        // Element SDK Implementation
+        async function onConfigChange(config) {
+            document.getElementById('article-title').textContent = config.article_title || defaultConfig.article_title;
+            document.getElementById('school-name').textContent = config.school_name || defaultConfig.school_name;
+            document.getElementById('class-name').textContent = config.class_name || defaultConfig.class_name;
+            document.getElementById('story-content').textContent = config.story_content || defaultConfig.story_content;
+            document.getElementById('info-school').textContent = config.school_name || defaultConfig.school_name;
+            document.getElementById('info-class').textContent = config.class_name || defaultConfig.class_name;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["article_title", config.article_title || defaultConfig.article_title],
+                ["school_name", config.school_name || defaultConfig.school_name],
+                ["class_name", config.class_name || defaultConfig.class_name],
+                ["story_content", config.story_content || defaultConfig.story_content]
+            ]);
+        }
+
+        // Initialize Element SDK
+        async function initializeApp() {
+            try {
+                if (window.elementSdk) {
+                    await window.elementSdk.init({
+                        defaultConfig,
+                        onConfigChange,
+                        mapToCapabilities,
+                        mapToEditPanelValues
+                    });
+                }
+                
+                // Set specific date
+                document.getElementById('current-date').textContent = '13 Agustus 2025';
+            } catch (error) {
+                console.error("Initialization error:", error);
+            }
+        }
+
+        // File Upload Functions
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                processFile(file);
+            }
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('dragover');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('dragover');
+            
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                processFile(files[0]);
+            }
+        }
+
+        function processFile(file) {
+            // Check if it's an image
+            if (!file.type.startsWith('image/')) {
+                showNotification('Mohon pilih file gambar yang valid!', 'error');
+                return;
+            }
+
+            // Check file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('Ukuran file terlalu besar! Maksimal 10MB.', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                displayPhoto(e.target.result, file.name);
+                showNotification('Foto berhasil diupload! 🎉', 'success');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function displayPhoto(imageSrc, fileName) {
+            const uploadSection = document.getElementById('upload-section');
+            const photoDisplay = document.getElementById('photo-display');
+            const uploadedPhoto = document.getElementById('uploaded-photo');
+
+            uploadedPhoto.src = imageSrc;
+            uploadedPhoto.alt = `Foto Kenangan - ${fileName}`;
+            
+            uploadSection.classList.add('hidden');
+            photoDisplay.classList.remove('hidden');
+            photoDisplay.classList.add('fade-in');
+        }
+
+        function changePhoto() {
+            const uploadSection = document.getElementById('upload-section');
+            const photoDisplay = document.getElementById('photo-display');
+            
+            photoDisplay.classList.add('hidden');
+            uploadSection.classList.remove('hidden');
+            
+            // Reset file input
+            document.getElementById('photo-input').value = '';
+        }
+
+        function downloadPhoto() {
+            const photo = document.getElementById('uploaded-photo');
+            const link = document.createElement('a');
+            link.download = 'kenangan_kelas_12_tkj4_2025.jpg';
+            link.href = photo.src;
+            link.click();
+            
+            showNotification('Foto berhasil didownload! 💾', 'success');
+        }
+
+        // Notification Function
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 px-6 py-4 rounded-xl shadow-2xl text-white font-semibold transform transition-all duration-300 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            }`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize app when page loads
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995f6ba641e83fca',t:'MTc2MTcwNjgwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

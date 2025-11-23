@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan Kelas XII TKJ 4 - Lomba 17 Agustus</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .memory-book {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fed7aa 100%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .photo-frame {
+            background: linear-gradient(45deg, #ffffff, #f8fafc);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+            z-index: 10;
+        }
+        
+        .photo-placeholder {
+            background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
+            border: 3px dashed #9ca3af;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .flag-decoration {
+            animation: wave 4s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-5px) rotate(1deg); }
+        }
+        
+        .competition-badge {
+            background: linear-gradient(45deg, #dc2626, #ef4444);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+        
+        .class-header {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #991b1b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .class-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+        
+        .story-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left: 6px solid #dc2626;
+        }
+        
+        .quote-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #fca5a5;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50 font-sans">
+  <main class="min-h-full p-4 md:p-6"><!-- Header Kelas -->
+   <div class="class-header rounded-t-3xl p-6 md:p-8 text-white relative z-10 mb-8">
+    <div class="relative z-10">
+     <div class="text-center mb-6">
+      <div class="flex justify-center items-center gap-4 mb-4">
+       <div class="flag-decoration">
+        <svg width="50" height="35" viewbox="0 0 50 35" class="border-2 border-white rounded"><rect width="50" height="17.5" fill="#FF0000" /> <rect y="17.5" width="50" height="17.5" fill="#FFFFFF" />
+        </svg>
+       </div>
+       <h1 id="class-name" class="text-3xl md:text-5xl font-bold tracking-wide">XII TKJ 4</h1>
+       <div class="flag-decoration" style="animation-delay: -2s;">
+        <svg width="50" height="35" viewbox="0 0 50 35" class="border-2 border-white rounded"><rect width="50" height="17.5" fill="#FF0000" /> <rect y="17.5" width="50" height="17.5" fill="#FFFFFF" />
+        </svg>
+       </div>
+      </div>
+      <h2 id="school-name" class="text-xl md:text-2xl font-semibold opacity-90">SMK Negeri 1 Slawi</h2>
+      <div class="mt-4 flex justify-center gap-2"><span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium"> 🏆 Lomba 17 Agustus </span> <span class="px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium"> 📸 Kenangan Terindah </span>
+      </div>
+     </div>
+    </div>
+   </div><!-- Konten Utama -->
+   <div class="memory-book rounded-b-3xl rounded-t-lg p-6 md:p-8 max-w-6xl mx-auto"><!-- Cerita Utama -->
+    <div class="story-card rounded-2xl p-6 md:p-8 mb-8 shadow-lg">
+     <div class="flex items-center gap-3 mb-6"><span class="text-3xl">📖</span>
+      <h3 class="text-2xl font-bold text-gray-800">Cerita Lomba 17 Agustus</h3>
+     </div>
+     <p id="main-story" class="text-gray-700 leading-relaxed text-lg mb-6">Pagi itu, langit diselimuti awan kelabu. Gerimis turun pelan, membasahi halaman sekolah yang dipenuhi semangat kemerdekaan. Bagi kelas TKJ 4, ini adalah 17 Agustus terakhir mereka sebelum meninggalkan masa sekolah.Lomba dimulai dengan egrang yang penuh tawa ketika banyak peserta jatuh di tanah licin. Dilanjutkan estafet sarung yang membuat semua berlarian basah kuyup, saling mendukung agar tak terjatuh. Suasana semakin ramai saat bakiak dimainkan, langkah-langkah yang tak seirama berubah menjadi tawa bersama Pada lempar sandal, banyak lemparan meleset ke arah yang tak terduga, namun sorakan tetap menggema. Puncaknya, pecah kendil menjadi lomba paling seru. Air yang muncrat dari kendi pecah membuat semua tertawa di bawah gerimis yang makin deras.Seragam mereka kotor oleh lumpur, namun hati terasa hangat. Hujan turun semakin deras, seolah ikut menyimpan kenangan hari itu 
+     — hari di mana kelas TKJ 4 merayakan kemerdekaan untuk terakhir kalinya dengan penuh kebersamaan, tawa, dan kenangan yang tak akan pernah terlupakan.Meski lelah, kami bahagia karena bisa menikmati momen terakhir bersama teman-teman sebelum lulus. Kenangan itu akan selalu kami ingat sebagai salah satu hari paling seru di masa sekolah.</p><!-- Lomba yang diikuti -->
+     <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+      <div class="competition-badge text-white px-4 py-3 rounded-xl text-center font-medium">
+       🚶 Egrang
+      </div>
+      <div class="competition-badge text-white px-4 py-3 rounded-xl text-center font-medium" style="animation-delay: 0.2s;">
+       🏃 Estafet Sarung
+      </div>
+      <div class="competition-badge text-white px-4 py-3 rounded-xl text-center font-medium" style="animation-delay: 0.4s;">
+       👟 Bakiak
+      </div>
+      <div class="competition-badge text-white px-4 py-3 rounded-xl text-center font-medium" style="animation-delay: 0.6s;">
+       🩴 Lempar Sandal
+      </div>
+      <div class="competition-badge text-white px-4 py-3 rounded-xl text-center font-medium" style="animation-delay: 0.8s;">
+       🏺 Pecah Kendil
+      </div>
+     </div>
+    </div><!-- Galeri Foto -->
+    <div class="mb-8">
+     <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-2"><span class="text-3xl">📷</span> Foto Kenangan</h3>
+      <p class="text-gray-600">Momen berharga yang terabadikan</p>
+     </div>
+     <div class="flex justify-center"><!-- Foto Utama -->
+      <div class="photo-frame rounded-2xl p-6 bg-white max-w-lg w-full">
+       <div class="photo-placeholder rounded-xl mb-4">
+        <div class="text-center text-gray-500">
+         <svg class="w-20 h-20 mx-auto mb-3" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+         </svg>
+         <p class="text-lg font-medium">Foto Lomba 17 Agustus</p>
+         <p class="text-sm">Klik untuk upload</p>
+        </div>
+       </div>
+       <p id="photo1-caption" class="text-center text-gray-700 font-medium text-lg">Foto bersama kelas XII TKJ 4 setelah lomba 17 Agustus - kegembiraan dan kebersamaan terakhir di SMK Negeri 1 Slawi</p>
+      </div>
+     </div>
+    </div><!-- Kutipan Berkesan -->
+    <div class="quote-card rounded-2xl p-6 md:p-8 text-center">
+     <div class="mb-4"><span class="text-4xl">💭</span>
+     </div>
+     <blockquote id="memorable-quote" class="text-xl md:text-2xl font-semibold text-red-800 italic mb-4">
+      "Kenangan lomba 17 Agustus terakhir ini akan selalu kami ingat sebagai salah satu hari paling seru di masa sekolah. Terima kasih SMK Negeri 1 Slawi!"
+     </blockquote>
+     <div class="flex justify-center items-center gap-2 text-gray-600"><span class="w-8 h-0.5 bg-red-400"></span> <span class="font-medium">Kelas XII TKJ 4</span> <span class="w-8 h-0.5 bg-red-400"></span>
+     </div>
+    </div><!-- Statistik Kelas -->
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+     <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+      <div class="text-3xl mb-2">
+       👥
+      </div>
+      <div class="text-2xl font-bold text-red-600">
+       34
+      </div>
+      <div class="text-gray-600">
+       Siswa Berpartisipasi
+      </div>
+     </div>
+     <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+      <div class="text-3xl mb-2">
+       🏆
+      </div>
+      <div class="text-2xl font-bold text-red-600">
+       5
+      </div>
+      <div class="text-gray-600">
+       Lomba Tradisional
+      </div>
+     </div>
+     <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+      <div class="text-3xl mb-2">
+       ⭐
+      </div>
+      <div class="text-2xl font-bold text-red-600">
+       100%
+      </div>
+      <div class="text-gray-600">
+       Semangat Juang
+      </div>
+     </div>
+    </div>
+   </div><!-- Footer -->
+   <footer class="text-center mt-8 py-6">
+    <div class="flex justify-center items-center gap-4 mb-4"><span class="text-2xl">🎉</span> <span class="text-gray-600 font-medium">Dirgahayu Republik Indonesia ke-80</span> <span class="text-2xl">🎉</span>
+    </div>
+    <p class="text-gray-500 text-sm">Kenangan Lomba 17 Agustus - XII TKJ 4</p>
+   </footer>
+  </main>
+  <script>
+        const defaultConfig = {
+            class_name: "XII TKJ 4",
+            school_name: "SMK Negeri 1 Slawi",
+            main_story: "Pagi itu, langit diselimuti awan kelabu. Gerimis turun pelan, membasahi halaman sekolah yang dipenuhi semangat kemerdekaan. Bagi kelas TKJ 4, ini adalah 17 Agustus terakhir mereka sebelum meninggalkan masa sekolah.Lomba dimulai dengan egrang yang penuh tawa ketika banyak peserta jatuh di tanah licin. Dilanjutkan estafet sarung yang membuat semua berlarian basah kuyup, saling mendukung agar tak terjatuh. Suasana semakin ramai saat bakiak dimainkan, langkah-langkah yang tak seirama berubah menjadi tawa bersama.Pada lempar sandal, banyak lemparan meleset ke arah yang tak terduga, namun sorakan tetap menggema. Puncaknya, pecah kendil menjadi lomba paling seru. Air yang muncrat dari kendi pecah membuat semua tertawa di bawah gerimis yang makin deras.Seragam mereka kotor oleh lumpur, namun hati terasa hangat. Hujan turun semakin deras, seolah ikut menyimpan kenangan hari itu, hari di mana kelas TKJ 4 merayakan kemerdekaan untuk terakhir kalinya dengan penuh kebersamaan, tawa, dan kenangan yang tak akan pernah terlupakan. Meski lelah, kami bahagia karena bisa menikmati momen terakhir bersama teman-teman sebelum lulus. Kenangan itu akan selalu kami ingat sebagai salah satu hari paling seru di masa sekolah.",
+            memorable_quote: "Kenangan lomba 17 Agustus terakhir ini akan selalu kami ingat sebagai salah satu hari paling seru di masa sekolah. Terima kasih SMK Negeri 1 Slawi!",
+            photo1_caption: "Foto bersama kelas XII TKJ 4 setelah lomba 17 Agustus - kegembiraan dan kebersamaan terakhir di SMK Negeri 1 Slawi",
+            background_color: "#fef3c7",
+            primary_color: "#dc2626",
+            text_color: "#374151",
+            accent_color: "#f59e0b",
+            surface_color: "#ffffff"
+        };
+
+        async function onConfigChange(config) {
+            const className = config.class_name || defaultConfig.class_name;
+            const schoolName = config.school_name || defaultConfig.school_name;
+            const mainStory = config.main_story || defaultConfig.main_story;
+            const memorableQuote = config.memorable_quote || defaultConfig.memorable_quote;
+            const photo1Caption = config.photo1_caption || defaultConfig.photo1_caption;
+            
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const primaryColor = config.primary_color || defaultConfig.primary_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+
+            // Update text content
+            document.getElementById('class-name').textContent = className;
+            document.getElementById('school-name').textContent = schoolName;
+            document.getElementById('main-story').textContent = mainStory;
+            document.getElementById('memorable-quote').textContent = "${memorableQuote}";
+            document.getElementById('photo1-caption').textContent = photo1Caption;
+
+            // Update colors
+            document.body.style.background = linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 50%, ${backgroundColor} 100%);
+            
+            // Update memory book background
+            const memoryBook = document.querySelector('.memory-book');
+            if (memoryBook) {
+                memoryBook.style.background = linear-gradient(135deg, ${backgroundColor} 0%, ${accentColor}20 50%, ${surfaceColor} 100%);
+            }
+
+            // Update class header
+            const classHeader = document.querySelector('.class-header');
+            if (classHeader) {
+                classHeader.style.background = linear-gradient(135deg, ${primaryColor} 0%, ${primaryColor}dd 50%, ${primaryColor}bb 100%);
+            }
+
+            // Update primary color elements
+            const primaryElements = document.querySelectorAll('.text-red-600, .text-red-800, .border-red-500, .bg-red-400');
+            primaryElements.forEach(el => {
+                if (el.classList.contains('text-red-600') || el.classList.contains('text-red-800')) {
+                    el.style.color = primaryColor;
+                }
+                if (el.classList.contains('bg-red-400')) {
+                    el.style.backgroundColor = primaryColor;
+                }
+            });
+
+            // Update competition badges
+            const badges = document.querySelectorAll('.competition-badge');
+            badges.forEach(badge => {
+                badge.style.background = linear-gradient(45deg, ${primaryColor}, ${accentColor});
+            });
+
+            // Update story card border
+            const storyCard = document.querySelector('.story-card');
+            if (storyCard) {
+                storyCard.style.borderLeftColor = primaryColor;
+            }
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.primary_color || defaultConfig.primary_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.accent_color || defaultConfig.accent_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["class_name", config.class_name || defaultConfig.class_name],
+                ["school_name", config.school_name || defaultConfig.school_name],
+                ["main_story", config.main_story || defaultConfig.main_story],
+                ["memorable_quote", config.memorable_quote || defaultConfig.memorable_quote],
+                ["photo1_caption", config.photo1_caption || defaultConfig.photo1_caption]
+            ]);
+        }
+
+        // Initialize the SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'995ec61231bdc0c2',t:'MTc2MTcwMDAyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
