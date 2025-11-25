@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Kenangan XII TKJ 4</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100%;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100%;
+            padding: 40px 20px;
+        }
+
+        .album-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0 0 15px 0;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 20px;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .photo-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .photo-frame {
+            display: inline-block;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .camera-icon {
+            width: 80px;
+            height: 80px;
+        }
+
+        .photo-caption {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .story-section {
+            background: #fff9f0;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 5px solid #f5576c;
+            margin-top: 30px;
+        }
+
+        .story-section h2 {
+            margin: 0 0 25px 0;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .story-section p {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+
+        .story-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #eee;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 16px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .decorative-hearts {
+            text-align: center;
+            font-size: 30px;
+            margin: 20px 0;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header p {
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .story-section {
+                padding: 25px;
+            }
+
+            .story-section h2 {
+                font-size: 26px;
+            }
+
+            .story-section p {
+                font-size: 16px;
+            }
+
+            .photo-placeholder {
+                height: 250px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="album-wrapper">
+    <div class="header">
+     <h1 id="main-title">Album Kenangan XII TKJ 4</h1>
+     <p id="subtitle">Kenangan Hari Guru Bersama Ibu Inayah</p>
+    </div>
+    <div class="content">
+     <div class="photo-section">
+      <div class="photo-frame">
+       <div class="photo-placeholder">
+        <svg class="camera-icon" viewbox="0 0 24 24" fill="none" stroke="#f5576c" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path> <circle cx="12" cy="13" r="4"></circle>
+        </svg><span style="color: #f5576c; font-size: 20px; font-weight: bold;">📸 Foto Kenangan</span> <span style="color: #999; font-size: 14px;">XII TKJ 4 &amp; Ibu Inayah</span>
+       </div>
+      </div>
+      <p class="photo-caption">Momen spesial Hari Guru bersama kelas XII TKJ 4</p>
+     </div>
+     <div class="decorative-hearts">
+      ❤ 💐 ❤
+     </div>
+     <div class="story-section">
+      <h2 id="story-title">Hari Guru Pertama Bersama Ibu Inayah</h2>
+      <p id="story-text">Hari itu adalah momen yang sangat spesial bagi kami, siswa kelas TKJ 4. Untuk pertama kalinya, kami merayakan Hari Guru bersama <span class="highlight">Ibu Nur Inayah</span> yang biasa kami panggil ibu inayah, guru yang selalu sabar dan penuh semangat mengajar kami. Sejak pagi, kami menyiapkan kejutan kecil berupa buket bunga, kado, surprise dan lagu sederhana untuk beliau. Suasana kelas terasa hangat dan penuh keceriaan. <br><br>
+        Saat Ibu Inayah memasuki kelas, kami serempak menyanyikan lagu <span class="highlight">"Terima Kasih Guruku"</span>. Beliau terlihat terkejut sekaligus terharu melihat kami kompak mempersiapkan acara itu. Senyum Ibu Inayah menjadi hadiah paling indah di pagi itu.</p>
+      <p id="closing-text">Hari Guru pertama bersama beliau menjadi kenangan yang tak akan kami lupakan — hari di mana kami benar-benar merasakan arti kasih sayang seorang guru.</p>
+     </div>
+    </div>
+    <div class="footer">
+     <p>💝 Dengan cinta dan penghormatan dari XII TKJ 4 💝</p>
+    </div>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            main_title: "Album Kenangan XII TKJ 4",
+            subtitle: "Kenangan Hari Guru Bersama Ibu Inayah",
+            story_title: "Hari Guru Pertama Bersama Ibu Inayah",
+            story_text: 'Hari itu adalah momen yang sangat spesial bagi kami, siswa kelas TKJ 4. Untuk pertama kalinya, kami merayakan Hari Guru bersama Ibu Nur Inayah yang biasa kami panggil ibu inayah, guru yang selalu sabar dan penuh semangat mengajar kami. Sejak pagi, kami menyiapkan kejutan kecil berupa buket bunga, kado, surprise dan lagu sederhana untuk beliau. Suasana kelas terasa hangat dan penuh keceriaan.\n\nSaat Ibu Inayah memasuki kelas, kami serempak menyanyikan lagu "Terima Kasih Guruku". Beliau terlihat terkejut sekaligus terharu melihat kami kompak mempersiapkan acara itu. Senyum Ibu Inayah menjadi hadiah paling indah di pagi itu.',
+            closing_text: "Hari Guru pertama bersama beliau menjadi kenangan yang tak akan kami lupakan — hari di mana kami benar-benar merasakan arti kasih sayang seorang guru.",
+            background_color: "#667eea",
+            header_color: "#f093fb",
+            accent_color: "#f5576c"
+        };
+
+        async function onConfigChange(config) {
+            const mainTitle = config.main_title || defaultConfig.main_title;
+            const subtitle = config.subtitle || defaultConfig.subtitle;
+            const storyTitle = config.story_title || defaultConfig.story_title;
+            const storyText = config.story_text || defaultConfig.story_text;
+            const closingText = config.closing_text || defaultConfig.closing_text;
+
+            document.getElementById('main-title').textContent = mainTitle;
+            document.getElementById('subtitle').textContent = subtitle;
+            document.getElementById('story-title').textContent = storyTitle;
+            
+            const storyParagraph = document.getElementById('story-text');
+            const paragraphs = storyText.split('\n\n');
+            storyParagraph.innerHTML = paragraphs.map(p => 
+                p.replace('Ibu Nur Inayah', '<span class="highlight">Ibu Nur Inayah</span>')
+                 .replace('"Terima Kasih Guruku"', '<span class="highlight">"Terima Kasih Guruku"</span>')
+            ).join('<br><br>');
+            
+            document.getElementById('closing-text').textContent = closingText;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["main_title", config.main_title || defaultConfig.main_title],
+                ["subtitle", config.subtitle || defaultConfig.subtitle],
+                ["story_title", config.story_title || defaultConfig.story_title],
+                ["story_text", config.story_text || defaultConfig.story_text],
+                ["closing_text", config.closing_text || defaultConfig.closing_text]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a377fc222fe9d72',t:'MTc2Mzk3MjU1Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
